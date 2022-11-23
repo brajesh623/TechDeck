@@ -21,6 +21,18 @@ public class Cart {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer cartId;
+	private Integer cartTotal;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Product> productList;
+	public Integer getCartTotal() {
+		return cartTotal;
+	}
+	public void setCartTotal() {
+		Integer total=0;
+		for(Product p:productList) {
+			total+=p.getPrice()*p.getQuantity();
+		}
+		cartTotal=total;
+	}
+	
 }
