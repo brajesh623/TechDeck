@@ -1,4 +1,4 @@
-package com.teckdeck.model;
+package com.techdeck.model;
 
 import java.util.List;
 
@@ -23,6 +23,8 @@ public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer orderId;
-	@OneToMany(cascade = CascadeType.ALL,mappedBy = "order")
+	@OneToMany(cascade = CascadeType.ALL)
 	private List<Product> productList;
+	private Integer amount;
+	private String status;
 }

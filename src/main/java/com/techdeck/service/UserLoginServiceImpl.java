@@ -2,21 +2,21 @@ package com.techdeck.service;
 
 import java.time.LocalDateTime;
 import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.techdeck.exception.LoginException;
+import com.techdeck.model.CurrentUserSession;
+import com.techdeck.model.LoginDTO;
+import com.techdeck.model.User;
 import com.techdeck.repository.SessionRepo;
 import com.techdeck.repository.UserRepo;
-import com.teckdeck.model.CurrentUserSession;
-import com.teckdeck.model.LoginDTO;
-import com.teckdeck.model.User;
 
 import net.bytebuddy.utility.RandomString;
 
 @Service
-public class LoginServiceImpl implements LoginService{
-	
+public class UserLoginServiceImpl implements UserLoginService{
 	@Autowired
 	private UserRepo uRepo;
 	
@@ -54,5 +54,4 @@ public class LoginServiceImpl implements LoginService{
 		sRepo.delete(validUserSession);
 		return "Logged out successfully.";
 	}
-
 }

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techdeck.exception.LoginException;
+import com.techdeck.model.AdminDto;
 import com.techdeck.service.AdminLoginService;
-import com.teckdeck.model.AdminDto;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 

@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 import com.techdeck.exception.FeedbackException;
 import com.techdeck.exception.ProductException;
 import com.techdeck.exception.UserException;
+import com.techdeck.model.CurrentUserSession;
+import com.techdeck.model.Feedback;
+import com.techdeck.model.Product;
+import com.techdeck.model.User;
 import com.techdeck.repository.FeedbackRepo;
 import com.techdeck.repository.ProductRepo;
 import com.techdeck.repository.SessionRepo;
 import com.techdeck.repository.UserRepo;
-import com.teckdeck.model.CurrentUserSession;
-import com.teckdeck.model.Feedback;
-import com.teckdeck.model.Product;
-import com.teckdeck.model.User;
 
 @Service
 public class FeedbackServiceImpl implements FeedbackService{

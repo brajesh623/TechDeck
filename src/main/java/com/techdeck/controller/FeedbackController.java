@@ -19,8 +19,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.techdeck.exception.FeedbackException;
 import com.techdeck.exception.ProductException;
 import com.techdeck.exception.UserException;
+import com.techdeck.model.Feedback;
 import com.techdeck.service.FeedbackServiceImpl;
-import com.teckdeck.model.Feedback;
 
 @RestController
 @RequestMapping("/feedback")

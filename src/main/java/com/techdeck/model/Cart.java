@@ -1,4 +1,4 @@
-package com.teckdeck.model;
+package com.techdeck.model;
 
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,6 +24,9 @@ public class Cart {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer cartId;
 	private Integer cartTotal;
+	
+	@OneToOne(cascade = CascadeType.ALL)
+	private User user;
 	@OneToMany(cascade = CascadeType.ALL)
 	private List<Product> productList;
 	public Integer getCartTotal() {

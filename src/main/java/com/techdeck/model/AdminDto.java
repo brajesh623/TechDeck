@@ -1,4 +1,4 @@
-package com.teckdeck.model;
+package com.techdeck.model;
 
 import javax.validation.constraints.NotNull;
 

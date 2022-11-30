@@ -1,5 +1,7 @@
-package com.teckdeck.model;
+package com.techdeck.model;
 
+
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -46,7 +48,7 @@ public class User {
 	
 	@JsonIgnore
 	@OneToMany(cascade = CascadeType.ALL)
-	private Order order;
+	private List<Order> orders;
 	
 	@JsonIgnore
 	@OneToOne(cascade = CascadeType.ALL)

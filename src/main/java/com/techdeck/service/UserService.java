@@ -3,7 +3,7 @@ package com.techdeck.service;
 import java.util.List;
 
 import com.techdeck.exception.UserException;
-import com.teckdeck.model.User;
+import com.techdeck.model.User;
 
 
 public interface UserService {

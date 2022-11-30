@@ -1,4 +1,4 @@
-package com.teckdeck.model;
+package com.techdeck.model;
 
 import java.time.LocalDate;
 

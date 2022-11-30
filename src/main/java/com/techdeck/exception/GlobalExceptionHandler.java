@@ -2,8 +2,6 @@ package com.techdeck.exception;
 
 import java.time.LocalDateTime;
 
-import javax.el.MethodNotFoundException;
-
 import org.springframework.data.crossstore.ChangeSetPersister.NotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,10 +12,6 @@ import org.springframework.web.context.request.WebRequest;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
-
-	
-	
-	
 
 
 	@ExceptionHandler(UserException.class)
@@ -39,13 +33,55 @@ public class GlobalExceptionHandler {
 		err.setDetails(req.getDescription(false));
 		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
 	}
-
+	
+	@ExceptionHandler(ProductException.class)
+	public ResponseEntity<MyErrorDetails> ProductExceptionHandler(ProductException pe,WebRequest req){
+		
+		MyErrorDetails err=new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(pe.getMessage());
+		err.setDetails(req.getDescription(false));
+		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(CategoryException.class)
+	public ResponseEntity<MyErrorDetails> categoryExceptionHandler(CategoryException ce,WebRequest req){
+		
+		MyErrorDetails err=new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ce.getMessage());
+		err.setDetails(req.getDescription(false));
+		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(CartException.class)
+	public ResponseEntity<MyErrorDetails> cartExceptionHandler(CartException ce,WebRequest req){
+		
+		MyErrorDetails err=new MyErrorDetails();
+		err.setTimestamp(LocalDateTime.now());
+		err.setMessage(ce.getMessage());
+		err.setDetails(req.getDescription(false));
+		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
+	}
+	
+	@ExceptionHandler(FeedbackException.class)
+	public ResponseEntity<MyErrorDetails> myRouteException(FeedbackException re, WebRequest webReq){
+		
+		MyErrorDetails red = new MyErrorDetails();
+		red.setTimestamp(LocalDateTime.now());
+		red.setMessage(re.getMessage());
+		red.setDetails(webReq.getDescription(false));
+		
+		return new ResponseEntity<MyErrorDetails>(red, HttpStatus.BAD_REQUEST);
+		
+	}
+	
 	@ExceptionHandler(Exception.class)
-	public ResponseEntity<MyErrorDetails> otherExceptionHandler(Exception se, WebRequest req){
+	public ResponseEntity<MyErrorDetails> MyExceptionHandler(Exception e, WebRequest req){
 	
 		MyErrorDetails err= new MyErrorDetails();
 			err.setTimestamp(LocalDateTime.now());
-			err.setMessage(se.getMessage());
+			err.setMessage(e.getMessage());
 			err.setDetails(req.getDescription(false));
 				
 		return new ResponseEntity<MyErrorDetails>(err, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -65,22 +101,6 @@ public class GlobalExceptionHandler {
 		
 	}
 
-	@ExceptionHandler(FeedbackException.class)
-	public ResponseEntity<MyErrorDetails> myRouteException(FeedbackException re, WebRequest webReq){
-		
-		MyErrorDetails red = new MyErrorDetails();
-		red.setTimestamp(LocalDateTime.now());
-		red.setMessage(re.getMessage());
-		red.setDetails(webReq.getDescription(false));
-		
-		return new ResponseEntity<MyErrorDetails>(red, HttpStatus.BAD_REQUEST);
-		
-	}
-	
-	
-
-	
-	
 	@ExceptionHandler(NotFoundException.class)
 	public ResponseEntity<MyErrorDetails> NotFoundExceptionHandler(NotFoundException ne,WebRequest req){
 		
@@ -90,19 +110,6 @@ public class GlobalExceptionHandler {
 		err.setDetails(req.getDescription(false));
 		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
 	}
-	
-	@ExceptionHandler(MethodNotFoundException.class)
-	public ResponseEntity<MyErrorDetails> methodNotFoundExceptionHandler(MethodNotFoundException me,WebRequest req){
-		
-		MyErrorDetails err=new MyErrorDetails();
-		err.setTimestamp(LocalDateTime.now());
-		err.setMessage(me.getMessage());
-		err.setDetails(req.getDescription(false));
-		return new ResponseEntity<MyErrorDetails>(err,HttpStatus.BAD_REQUEST);
-	}
-	
-	
-	
 	
 	@ExceptionHandler(DateTimeException.class)
 	public ResponseEntity<MyErrorDetails> DateTimeExceptionHandler(DateTimeException se, WebRequest req){

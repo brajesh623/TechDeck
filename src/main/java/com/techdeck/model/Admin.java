@@ -1,4 +1,4 @@
-package com.teckdeck.model;
+package com.techdeck.model;
 
 public class Admin {
 	public final Integer id=1;

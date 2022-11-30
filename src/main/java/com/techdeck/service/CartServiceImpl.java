@@ -8,14 +8,14 @@ import org.springframework.stereotype.Service;
 import com.techdeck.exception.CartException;
 import com.techdeck.exception.ProductException;
 import com.techdeck.exception.UserException;
+import com.techdeck.model.Cart;
+import com.techdeck.model.CurrentUserSession;
+import com.techdeck.model.Product;
+import com.techdeck.model.User;
 import com.techdeck.repository.CartRepo;
 import com.techdeck.repository.ProductRepo;
 import com.techdeck.repository.SessionRepo;
 import com.techdeck.repository.UserRepo;
-import com.teckdeck.model.Cart;
-import com.teckdeck.model.CurrentUserSession;
-import com.teckdeck.model.Product;
-import com.teckdeck.model.User;
 
 @Service
 public class CartServiceImpl implements CartService{
@@ -156,6 +156,20 @@ public class CartServiceImpl implements CartService{
 			Cart cart=cRepo.save(c);
 			return cart;
 		}else throw new UserException("Invalid User Id");
+	}
+
+	@Override
+	public Cart viewCart(String key) throws UserException, CartException {
+		CurrentUserSession loggedInUser=sRepo.findByUuid(key);
+		if(loggedInUser==null) {
+			throw new UserException("Please provide a valid key to view cart.");
+		}
+		User user = uRepo.findById(loggedInUser.getUserId()).orElseThrow(() -> new UserException("User with Id " + loggedInUser.getUserId() + " not found"));
+		if(user.getUserLoginId()==loggedInUser.getUserId()) {
+			return user.getCart();
+		}else {
+			throw new UserException("Invalid User Id");
+		}
 	}
 	
 }

@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.techdeck.exception.LoginException;
+import com.techdeck.model.Admin;
+import com.techdeck.model.AdminDto;
+import com.techdeck.model.CurrentUserSession;
 import com.techdeck.repository.SessionRepo;
-import com.teckdeck.model.Admin;
-import com.teckdeck.model.AdminDto;
-import com.teckdeck.model.CurrentUserSession;
 
 import net.bytebuddy.utility.RandomString;
 
@@ -43,7 +43,7 @@ public class AdminLoginServiceImpl implements AdminLoginService{
 
 	@Override
 	public String logOutFromAccount(String key) throws LoginException {
-CurrentUserSession validUserSession=sRepo.findByUuid(key);
+		CurrentUserSession validUserSession=sRepo.findByUuid(key);
 		
 		if(validUserSession==null) {
 			throw new LoginException("User not logged in with this username.");

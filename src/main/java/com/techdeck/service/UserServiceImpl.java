@@ -5,10 +5,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.techdeck.exception.UserException;
+import com.techdeck.model.CurrentUserSession;
+import com.techdeck.model.User;
 import com.techdeck.repository.SessionRepo;
 import com.techdeck.repository.UserRepo;
-import com.teckdeck.model.CurrentUserSession;
-import com.teckdeck.model.User;
 
 @Service
 public class UserServiceImpl implements UserService{

@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.techdeck.exception.LoginException;
-import com.techdeck.service.LoginService;
-import com.teckdeck.model.LoginDTO;
+import com.techdeck.model.LoginDTO;
+import com.techdeck.service.UserLoginService;
 
 import io.swagger.v3.oas.annotations.parameters.RequestBody;
 
@@ -20,7 +20,7 @@ import io.swagger.v3.oas.annotations.parameters.RequestBody;
 @RequestMapping("/user")
 public class UserLoginController {
 	@Autowired
-	private LoginService lService;
+	private UserLoginService lService;
 	
 	@PostMapping("/login")
 	public ResponseEntity<String> userLoginHandler(@Valid @RequestBody LoginDTO dto) throws LoginException{

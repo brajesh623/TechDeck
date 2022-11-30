@@ -5,7 +5,7 @@ import java.util.List;
 import com.techdeck.exception.FeedbackException;
 import com.techdeck.exception.ProductException;
 import com.techdeck.exception.UserException;
-import com.teckdeck.model.Feedback;
+import com.techdeck.model.Feedback;
 
 public interface FeedbackService {
 

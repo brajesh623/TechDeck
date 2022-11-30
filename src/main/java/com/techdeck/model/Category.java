@@ -1,13 +1,13 @@
-package com.teckdeck.model;
+package com.techdeck.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
+import javax.persistence.OneToMany;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,14 +18,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
-public class Product {
+public class Category {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer productId;
-	private String name;
-	private Integer price;
-	private Integer quantity;
-	@ManyToOne
-	@JsonIgnore
-	private Category category;
+	private Integer cId;
+	private String type;
+	@OneToMany(cascade = CascadeType.ALL,mappedBy = "category")
+	private List<Product> productList;
 }
